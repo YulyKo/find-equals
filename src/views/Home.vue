@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>Welcome to game!</h1>
+    <h1 class="title">Welcome to game!</h1>
     <game-panel></game-panel>
   </main>
 </template>
