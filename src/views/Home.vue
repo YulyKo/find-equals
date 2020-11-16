@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '@/main.sass'
+@import '@/main'
 
 .page
   height: 100vh
