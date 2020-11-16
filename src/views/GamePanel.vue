@@ -1,6 +1,19 @@
 <template>
-  <main>
-    <cards-vue></cards-vue>
+  <main class="panel flex">
+    <cards-vue>1</cards-vue>
+    <cards-vue>1</cards-vue>
+    <cards-vue>1</cards-vue>
+    <cards-vue>1</cards-vue>
+
+    <cards-vue>1</cards-vue>
+    <cards-vue>1</cards-vue>
+    <cards-vue>1</cards-vue>
+    <cards-vue>1</cards-vue>
+
+    <cards-vue>1</cards-vue>
+    <cards-vue>1</cards-vue>
+    <cards-vue>1</cards-vue>
+    <cards-vue>1</cards-vue>
   </main>
 </template>
 
@@ -15,6 +28,12 @@ export default {
 };
 </script>
 
-<style>
+<style lang="sass" scoped>
+@import '@/main'
 
+.panel
+  margin: 0 auto
+  margin-top: 2em
+  width: $panel-width
+  flex-wrap: wrap
 </style>

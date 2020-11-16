@@ -1,6 +1,6 @@
 <template>
-  <main>
-    <h1>Welcome to game!</h1>
+  <main class="page page--dark">
+    <h1 class="title">Welcome to game!</h1>
     <game-panel></game-panel>
   </main>
 </template>
@@ -16,6 +16,15 @@ export default {
 };
 </script>
 
-<style>
+<style lang="sass" scoped>
+@import '@/main'
 
+.page
+  height: 100vh
+  width: 100%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  &--dark
+    background-color: $black
 </style>
