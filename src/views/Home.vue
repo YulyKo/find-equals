@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import GamePanelVue from './GamePanel.vue';
+import GamePanelVue from '@/components/GamePanel.vue';
 
 export default {
   name: 'Home',
