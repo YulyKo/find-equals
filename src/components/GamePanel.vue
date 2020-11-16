@@ -37,6 +37,22 @@ export default {
     }),
   },
   methods: {
+    disableCards(firstId, secondId) {
+      for (let index = 0; index < this.cardsWithNumbers.length; index += 1) {
+        const element = this.cardsWithNumbers[index];
+        const { id } = this.cardsWithNumbers[index];
+        if (id === firstId || id === secondId) {
+          element.disable = true;
+        }
+      }
+      this.cardsWithNumbers.forEach((card) => {
+        if (card.id === firstId || card.id === secondId) {
+          // eslint-disable-next-line no-unused-vars
+          let { disable } = card;
+          disable = false;
+        }
+      });
+    },
     closeSelectedCards() {
       const first = document.getElementById(this.firstSelectedCard.id);
       const second = document.getElementById(this.secondSelectedCard.id);
@@ -58,7 +74,7 @@ export default {
     checkEquals() {
       if (this.firstSelectedCard.value !== this.secondSelectedCard.value) {
         this.closeSelectedCards();
-      } else console.log('disable cards here');
+      } else this.disableCards(this.firstSelectedCard.id, this.secondSelectedCard.id);
       this.cleanSelectedCard();
     },
     selectCard(card) {
