@@ -37,6 +37,13 @@ export default {
     }),
   },
   methods: {
+    checkEquals() {
+      if (this.firstSelectedCard.value !== this.secondSelectedCard.value) {
+        console.log('close selected cards here');
+      } else {
+        console.log('disable cards here');
+      }
+    },
     selectCard(card) {
       const cardDOM = document.getElementById(card.id);
       if (this.firstSelectedCard.id === '') {
@@ -46,7 +53,7 @@ export default {
         this.secondSelectedCard = card;
         cardDOM.style.display = 'block';
       }
-      if (this.firstSelectedCard.id !== '' && this.secondSelectedCard.value !== '') console.log('check equals here');
+      if (this.firstSelectedCard.id !== '' && this.secondSelectedCard.value !== '') this.checkEquals();
     },
   },
 };
