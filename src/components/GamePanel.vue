@@ -37,12 +37,29 @@ export default {
     }),
   },
   methods: {
+    closeSelectedCards() {
+      const first = document.getElementById(this.firstSelectedCard.id);
+      const second = document.getElementById(this.secondSelectedCard.id);
+      setTimeout(() => {
+        first.style.display = 'none';
+        second.style.display = 'none';
+      }, 1000);
+    },
+    cleanSelectedCard() {
+      this.firstSelectedCard = {
+        id: '',
+        value: '',
+      };
+      this.secondSelectedCard = {
+        id: '',
+        value: '',
+      };
+    },
     checkEquals() {
       if (this.firstSelectedCard.value !== this.secondSelectedCard.value) {
-        console.log('close selected cards here');
-      } else {
-        console.log('disable cards here');
-      }
+        this.closeSelectedCards();
+      } else console.log('disable cards here');
+      this.cleanSelectedCard();
     },
     selectCard(card) {
       const cardDOM = document.getElementById(card.id);
