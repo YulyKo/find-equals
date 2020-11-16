@@ -1,10 +1,8 @@
 <template>
-  <section class="card">
-    <img
-      src="@/assets/preview-card.png" alt="card"
-      class="card__image">
-    <h2 class="text card__text">0</h2>
-  </section>
+  <button type="button"
+          class="flex panel__card panel__card--hide">
+    <h2 class="text panel__card_text"><slot></slot></h2>
+  </button>
 </template>
 
 <script>
@@ -16,15 +14,19 @@ export default {
 <style lang="sass" scoped>
 @import '@/main.sass'
 
-.card
-  width: 11vh
-  height: 17vh
-  display: flex
-  justify-content: center
-  align-items: center
-  &__image
-    height: 100%
-  &__text
-    text-align: center
-    margin: auto
+.panel__card
+  margin: 10px
+  height: 100px
+  width: $card-w
+  background-color: $turquoise
+  border: none
+  &_text
+    display: none
+  &--show
+    box-shadow: inset 0 0 20px $black-ligth, inset 0 0 9px $turquoise
+  &--hide
+    box-shadow: 0 0 20px $black-ligth, 0 0 9px $turquoise
+.text
+  margin: auto
+
 </style>
