@@ -1,0 +1,63 @@
+<template>
+  <main class="panel flex">
+    <card-vue v-for="card in cardsWithNumbers"
+               :key="card.id"
+               :id="card.id"
+               @click="selectCard(card)"
+               :disable="card.disable">
+      {{ card.value }}
+    </card-vue>
+  </main>
+</template>
+
+<script>
+import CardVue from '@/components/Card.vue';
+import { mapGetters } from 'vuex';
+
+export default {
+  name: 'GamePanel',
+  components: {
+    cardVue: CardVue,
+  },
+  data() {
+    return {
+      firstSelectedCard: {
+        id: '',
+        value: '',
+      },
+      secondSelectedCard: {
+        id: '',
+        value: '',
+      },
+    };
+  },
+  computed: {
+    ...mapGetters({
+      cardsWithNumbers: 'getCardsWithNumbers',
+    }),
+  },
+  methods: {
+    selectCard(card) {
+      const cardDOM = document.getElementById(card.id);
+      if (this.firstSelectedCard.id === '') {
+        this.firstSelectedCard = card;
+        cardDOM.style.display = 'block';
+      } else if (this.secondSelectedCard.id === '') {
+        this.secondSelectedCard = card;
+        cardDOM.style.display = 'block';
+      }
+      if (this.firstSelectedCard.id !== '' && this.secondSelectedCard.value !== '') console.log('check equals here');
+    },
+  },
+};
+</script>
+
+<style lang="sass" scoped>
+@import '@/main'
+
+.panel
+  margin: 0 auto
+  margin-top: 2em
+  width: $panel-width
+  flex-wrap: wrap
+</style>

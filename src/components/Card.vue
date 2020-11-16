@@ -1,13 +1,17 @@
 <template>
-  <button type="button"
-          class="flex panel__card panel__card--hide">
-    <h2 class="text panel__card_text"><slot></slot></h2>
-  </button>
+  <section type="button"
+          class="flex panel__card" :disabled="disable">
+    <h2 class="text panel__card_text" :id="id"><slot></slot></h2>
+  </section>
 </template>
 
 <script>
 export default {
   name: 'Card',
+  props: {
+    id: Number,
+    disable: Boolean,
+  },
 };
 </script>
 
@@ -22,11 +26,10 @@ export default {
   border: none
   &_text
     display: none
+    color: $black
   &--show
     box-shadow: inset 0 0 20px $black-ligth, inset 0 0 9px $turquoise
   &--hide
     box-shadow: 0 0 20px $black-ligth, 0 0 9px $turquoise
-.text
-  margin: auto
 
 </style>
