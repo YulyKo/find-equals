@@ -1,9 +1,7 @@
 <template>
-  <main class="page grid-container">
-    <div class="container">
-      <h1 class="title">Welcome to game!</h1>
-      <game-panel></game-panel>
-    </div>
+  <main class="page page--dark">
+    <h1 class="title">Welcome to game!</h1>
+    <game-panel></game-panel>
   </main>
 </template>
 
@@ -18,9 +16,15 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
-.page {
-  width: 100%;
-  height: 100vh;
-}
+<style lang="sass" scoped>
+@import '@/main.sass'
+
+.page
+  height: 100vh
+  width: 100%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  &--dark
+    background-color: $black
 </style>
