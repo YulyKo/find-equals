@@ -13,7 +13,7 @@
 <script>
 import CardVue from '@/components/Card.vue';
 import { mapGetters, mapMutations } from 'vuex';
-import { WIN } from '@/utils/messages';
+import { WIN, TIME_OVER } from '@/utils/messages';
 
 export default {
   name: 'GamePanel',
@@ -51,7 +51,8 @@ export default {
     gameOver() {
       setTimeout(() => {
         if (+this.time === 0) {
-          this.setResultTime(this.time);
+          this.setResultTime(0);
+          this.setMessage(TIME_OVER);
           this.$router.push('/over');
         } else this.gameOver();
       }, 1100);
