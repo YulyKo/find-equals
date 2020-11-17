@@ -1,5 +1,5 @@
 <template>
-  <div class="page page--dark">
+  <div class="">
     <h1 class="title">{{ message }}</h1>
     <div class="flex">
       <span class="text">steps: {{ steps }}</span>
@@ -22,3 +22,9 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+.flex
+  margin-top: 2em
+  margin-bottom: 2em
+</style>
