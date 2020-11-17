@@ -12,7 +12,7 @@
 
 <script>
 import CardVue from '@/components/Card.vue';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   name: 'GamePanel',
@@ -34,9 +34,25 @@ export default {
   computed: {
     ...mapGetters({
       cardsWithNumbers: 'getCardsWithNumbers',
+      steps: 'getSteps',
     }),
   },
   methods: {
+    ...mapMutations({
+      setStep: 'setStep',
+    }),
+    addStep() {
+      this.setStep();
+      let countDisabledCards = 0;
+      this.cardsWithNumbers.forEach((card) => {
+        if (card.disable !== '') {
+          countDisabledCards += 1;
+        }
+      });
+      if (+countDisabledCards === +this.cardsWithNumbers.length) {
+        this.$router.push('/over');
+      }
+    },
     disableCards(firstId, secondId) {
       for (let index = 0; index < this.cardsWithNumbers.length; index += 1) {
         const element = this.cardsWithNumbers[index];
@@ -45,13 +61,7 @@ export default {
           element.disable = true;
         }
       }
-      this.cardsWithNumbers.forEach((card) => {
-        if (card.id === firstId || card.id === secondId) {
-          // eslint-disable-next-line no-unused-vars
-          let { disable } = card;
-          disable = false;
-        }
-      });
+      this.addStep();
     },
     closeSelectedCards() {
       const first = document.getElementById(this.firstSelectedCard.id);
