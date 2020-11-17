@@ -1,5 +1,5 @@
 <template>
-  <main class="page page--dark">
+  <main class="page">
     <h1 class="title">Welcome to game!</h1>
     <nav>
       <timer />
@@ -20,16 +20,3 @@ export default {
   },
 };
 </script>
-
-<style lang="sass" scoped>
-@import '@/main'
-
-.page
-  height: 100vh
-  width: 100%
-  display: flex
-  flex-direction: column
-  justify-content: center
-  &--dark
-    background-color: $black
-</style>
