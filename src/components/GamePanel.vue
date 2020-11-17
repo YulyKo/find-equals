@@ -39,7 +39,7 @@ export default {
       time: 'getTime',
     }),
     getNumberOfDisabledCards() {
-      let numberOfDisabledCards = 0;
+      let numberOfDisabledCards = 2;
       this.cardsWithNumbers.forEach((card) => {
         if (card.disable !== '') {
           numberOfDisabledCards += 1;
@@ -68,8 +68,10 @@ export default {
     },
     addStep() {
       this.setStep();
-      if (+this.getNumberOfDisabledCards === this.cardsWithNumbers.length) {
+      const number = this.getNumberOfDisabledCards;
+      if (number === this.cardsWithNumbers.length) {
         this.setMessage(WIN);
+        this.setResultTime(this.time);
         this.$router.push('/over');
       }
     },
