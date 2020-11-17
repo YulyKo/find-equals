@@ -5,7 +5,7 @@ const state = {
   resultTime: 0,
 };
 
-module.exports = {
+export default {
   state,
   getters,
   mutations,

@@ -1,5 +1,7 @@
 import { createStore } from 'vuex';
 import stepModule from './steps/index';
+import resultMessageModule from './resultMessage/index';
+import timeModule from './time/index';
 
 export default createStore({
   state: {
@@ -77,5 +79,7 @@ export default createStore({
   },
   modules: {
     stepModule,
+    resultMessageModule,
+    timeModule,
   },
 });

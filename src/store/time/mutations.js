@@ -2,6 +2,6 @@ function setResulttime(state, resultTime) {
   state.resultTime = resultTime;
 }
 
-module.exports = {
+export default {
   setResulttime,
 };
