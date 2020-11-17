@@ -1,14 +1,14 @@
 <template>
-  <game-over-panel />
+  <game-over-panel></game-over-panel>
 </template>
 
 <script>
-import GameOverPanel from '@/components/GameOverPanel.vue';
+import GameOverPanelVue from '../components/GameOverPanel.vue';
 
 export default {
   name: 'GameOverPage',
-  comnponents: {
-    gameOverPanel: GameOverPanel,
+  components: {
+    gameOverPanel: GameOverPanelVue,
   },
 };
 </script>
