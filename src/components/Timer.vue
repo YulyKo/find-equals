@@ -7,24 +7,29 @@
 
 <script>
 import { TIME_OVER } from '@/utils/messages';
+import { mapMutations } from 'vuex';
 
 export default {
   name: 'Timer',
   data() {
     return {
       message: '',
-      time: 60,
+      time: 6,
     };
   },
   created() {
     this.countTime();
   },
   methods: {
+    ...mapMutations({
+      setTime: 'setTime',
+    }),
     countTime() {
       if (this.time > 0) {
         setTimeout(() => {
           this.time -= 1;
           this.countTime();
+          this.setTime(this.time);
         }, 1000);
       } else this.message = TIME_OVER;
     },

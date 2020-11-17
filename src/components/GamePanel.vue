@@ -36,13 +36,26 @@ export default {
     ...mapGetters({
       cardsWithNumbers: 'getCardsWithNumbers',
       steps: 'getSteps',
+      time: 'getTime',
     }),
+  },
+  created() {
+    this.gameOver();
   },
   methods: {
     ...mapMutations({
       setStep: 'setStep',
       setMessage: 'setMessage',
+      setResultTime: 'setResultTime',
     }),
+    gameOver() {
+      setTimeout(() => {
+        if (+this.time === 0) {
+          this.setResultTime(this.time);
+          this.$router.push('/over');
+        } else this.gameOver();
+      }, 1100);
+    },
     addStep() {
       this.setStep();
       let countDisabledCards = 0;

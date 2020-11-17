@@ -1,7 +1,12 @@
-function setResulttime(state, resultTime) {
+function setResultTime(state, resultTime) {
   state.resultTime = resultTime;
 }
 
+function setTime(state, time) {
+  state.time = time;
+}
+
 export default {
-  setResulttime,
+  setResultTime,
+  setTime,
 };
