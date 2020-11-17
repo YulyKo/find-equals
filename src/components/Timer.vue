@@ -1,14 +1,18 @@
 <template>
-  <section class="flex timer">
+  <section class="timer">
     <time class="text" :datetime="time">{{ time }}</time>
+    <p class="text">{{ message }}</p>
   </section>
 </template>
 
 <script>
+import { TIME_OVER } from '@/utils/messages';
+
 export default {
   name: 'Timer',
   data() {
     return {
+      message: '',
       time: 60,
     };
   },
@@ -22,12 +26,8 @@ export default {
           this.time -= 1;
           this.countTime();
         }, 1000);
-      }
+      } else this.message = TIME_OVER;
     },
   },
 };
 </script>
-
-<style>
-
-</style>
