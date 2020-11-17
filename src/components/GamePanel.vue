@@ -13,6 +13,7 @@
 <script>
 import CardVue from '@/components/Card.vue';
 import { mapGetters, mapMutations } from 'vuex';
+import { WIN } from '@/utils/messages';
 
 export default {
   name: 'GamePanel',
@@ -40,6 +41,7 @@ export default {
   methods: {
     ...mapMutations({
       setStep: 'setStep',
+      setMessage: 'setMessage',
     }),
     addStep() {
       this.setStep();
@@ -50,6 +52,7 @@ export default {
         }
       });
       if (+countDisabledCards === +this.cardsWithNumbers.length) {
+        this.setMessage(WIN);
         this.$router.push('/over');
       }
     },
