@@ -3,7 +3,7 @@ import mutations from './mutations';
 
 const state = {
   defaultTime: 0,
-  time: 0,
+  time: 60,
   resultTime: 0,
 };
 
