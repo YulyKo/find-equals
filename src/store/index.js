@@ -1,7 +1,7 @@
 import { createStore } from 'vuex';
 import stepModule from './steps/index';
 import resultMessageModule from './resultMessage/index';
-import timeModule from './time/index';
+import timerModule from './timer/index';
 import cardsModule from './cards/index';
 
 export default createStore({
@@ -16,7 +16,7 @@ export default createStore({
   modules: {
     stepModule,
     resultMessageModule,
-    timeModule,
+    timerModule,
     cardsModule,
   },
 });

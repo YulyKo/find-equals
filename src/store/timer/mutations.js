@@ -7,7 +7,7 @@ function setTime(state, time) {
 }
 
 function setDefaultTime(state) {
-  state.time = 60;
+  state.time = state.defaultTime;
 }
 
 export default {
