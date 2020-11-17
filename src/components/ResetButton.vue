@@ -9,16 +9,14 @@ export default {
   name: 'ResetButton',
   methods: {
     ...mapMutations({
-      setStep: 'setStep',
-      setMessage: 'setMessage',
-      setResultTime: 'setResultTime',
-      setTime: 'setTime',
+      restoreSteps: 'restoreSteps',
+      setDefaultTime: 'setDefaultTime',
+      resetCardsWithNumbers: 'resetCardsWithNumbers',
     }),
     resetGame() {
-      this.setStep(0);
-      this.setMessage('');
-      this.setResultTime(0);
-      this.setTime(0);
+      this.restoreSteps();
+      this.setDefaultTime();
+      this.resetCardsWithNumbers();
       this.$router.push('/');
     },
   },
