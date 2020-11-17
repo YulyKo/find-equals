@@ -10,7 +10,7 @@
 
 <script>
 import GamePanelVue from '@/components/GamePanel.vue';
-import TimerVue from '../components/Timer.vue';
+import TimerVue from '@/components/Timer.vue';
 
 export default {
   name: 'Home',
