@@ -1,7 +1,7 @@
 <template>
   <section class="timer">
-    <time class="text" :datetime="time">{{ time }}</time>
-    <p class="text">{{ message }}</p>
+    <time class="text timer-text" :datetime="time">{{ time }}</time>
+    <p class="text timer-message" :class="{'none-text': message === ''}">{{ message }}</p>
   </section>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       message: '',
-      time: 60,
+      time: 2,
     };
   },
   created() {
@@ -31,3 +31,20 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+.timer
+  width: 40%
+  margin: 0 auto
+  margin-top: 2em
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  &-text
+    margin: 0
+  &-message
+    @extend .timer-text
+    margin-left: 2rem
+.none-text
+  display: none
+</style>
