@@ -46,4 +46,5 @@ export default {
     @extend .timer-text
     margin-left: 2rem
 .none-text
+  display: none
 </style>
