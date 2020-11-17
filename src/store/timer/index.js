@@ -2,7 +2,7 @@ import getters from './getters';
 import mutations from './mutations';
 
 const state = {
-  defaultTime: 60,
+  defaultTime: 0,
   time: 0,
   resultTime: 0,
 };

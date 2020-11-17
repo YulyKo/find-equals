@@ -1,8 +1,8 @@
 <template>
   <main class="panel flex">
     <card-vue v-for="card in cardsWithNumbers"
-               :key="card.id"
-               :id="card.id"
+               :key="+card.id"
+               :id="+card.id"
                @click="selectCard(card)"
                :disable="card.disable">
       {{ card.value }}
@@ -38,6 +38,15 @@ export default {
       steps: 'getSteps',
       time: 'getTime',
     }),
+    getNumberOfDisabledCards() {
+      let numberOfDisabledCards = 2;
+      this.cardsWithNumbers.forEach((card) => {
+        if (card.disable !== '') {
+          numberOfDisabledCards += 1;
+        }
+      });
+      return numberOfDisabledCards;
+    },
   },
   created() {
     this.gameOver();
@@ -59,14 +68,10 @@ export default {
     },
     addStep() {
       this.setStep();
-      let countDisabledCards = 0;
-      this.cardsWithNumbers.forEach((card) => {
-        if (card.disable !== '') {
-          countDisabledCards += 1;
-        }
-      });
-      if (+countDisabledCards === +this.cardsWithNumbers.length) {
+      const number = this.getNumberOfDisabledCards;
+      if (number === this.cardsWithNumbers.length) {
         this.setMessage(WIN);
+        this.setResultTime(this.time);
         this.$router.push('/over');
       }
     },
@@ -78,7 +83,6 @@ export default {
           element.disable = true;
         }
       }
-      this.addStep();
     },
     closeSelectedCards() {
       const first = document.getElementById(this.firstSelectedCard.id);
@@ -99,13 +103,14 @@ export default {
       };
     },
     checkEquals() {
+      this.addStep();
       if (this.firstSelectedCard.value !== this.secondSelectedCard.value) {
         this.closeSelectedCards();
       } else this.disableCards(this.firstSelectedCard.id, this.secondSelectedCard.id);
       this.cleanSelectedCard();
     },
     selectCard(card) {
-      const cardDOM = document.getElementById(card.id);
+      const cardDOM = document.getElementById(+card.id);
       if (this.firstSelectedCard.id === '') {
         this.firstSelectedCard = card;
         cardDOM.style.display = 'block';
