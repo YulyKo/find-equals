@@ -5,17 +5,17 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
 
 export default {
   name: 'Timer',
-  data() {
-    return {
-      time: 60,
-    };
-  },
   created() {
     this.countTime();
+  },
+  computed: {
+    ...mapGetters({
+      time: 'getTime',
+    }),
   },
   methods: {
     ...mapMutations({
@@ -25,7 +25,7 @@ export default {
     countTime() {
       setTimeout(() => {
         if (this.time > 0) {
-          this.time -= 1;
+          this.time += 1;
           this.setTime(this.time);
           this.countTime();
         }
