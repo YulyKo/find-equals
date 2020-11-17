@@ -31,3 +31,12 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+.timer
+  width: 40%
+  margin: 0 auto
+  display: flex
+  justify-content: space-evenly
+  flex-wrap: wrap
+</style>
