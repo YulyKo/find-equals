@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       message: '',
-      time: 2,
+      time: 60,
     };
   },
   created() {
