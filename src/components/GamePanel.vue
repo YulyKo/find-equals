@@ -12,7 +12,8 @@
 
 <script>
 import CardVue from '@/components/Card.vue';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
+import { WIN, TIME_OVER } from '@/utils/messages';
 
 export default {
   name: 'GamePanel',
@@ -34,9 +35,41 @@ export default {
   computed: {
     ...mapGetters({
       cardsWithNumbers: 'getCardsWithNumbers',
+      steps: 'getSteps',
+      time: 'getTime',
     }),
   },
+  created() {
+    this.gameOver();
+  },
   methods: {
+    ...mapMutations({
+      setStep: 'setStep',
+      setMessage: 'setMessage',
+      setResultTime: 'setResultTime',
+    }),
+    gameOver() {
+      setTimeout(() => {
+        if (+this.time === 0) {
+          this.setResultTime(0);
+          this.setMessage(TIME_OVER);
+          this.$router.push('/over');
+        } else this.gameOver();
+      }, 1100);
+    },
+    addStep() {
+      this.setStep();
+      let countDisabledCards = 0;
+      this.cardsWithNumbers.forEach((card) => {
+        if (card.disable !== '') {
+          countDisabledCards += 1;
+        }
+      });
+      if (+countDisabledCards === +this.cardsWithNumbers.length) {
+        this.setMessage(WIN);
+        this.$router.push('/over');
+      }
+    },
     disableCards(firstId, secondId) {
       for (let index = 0; index < this.cardsWithNumbers.length; index += 1) {
         const element = this.cardsWithNumbers[index];
@@ -45,13 +78,7 @@ export default {
           element.disable = true;
         }
       }
-      this.cardsWithNumbers.forEach((card) => {
-        if (card.id === firstId || card.id === secondId) {
-          // eslint-disable-next-line no-unused-vars
-          let { disable } = card;
-          disable = false;
-        }
-      });
+      this.addStep();
     },
     closeSelectedCards() {
       const first = document.getElementById(this.firstSelectedCard.id);

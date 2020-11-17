@@ -1,32 +1,36 @@
 <template>
   <section class="timer">
     <time class="text timer-text" :datetime="time">{{ time }}</time>
-    <p class="text timer-message" :class="{'none-text': message === ''}">{{ message }}</p>
   </section>
 </template>
 
 <script>
-import { TIME_OVER } from '@/utils/messages';
+import { mapMutations } from 'vuex';
 
 export default {
   name: 'Timer',
   data() {
     return {
       message: '',
-      time: 2,
+      time: 60,
     };
   },
   created() {
     this.countTime();
   },
   methods: {
+    ...mapMutations({
+      setTime: 'setTime',
+      restoreSteps: 'restoreSteps',
+    }),
     countTime() {
       if (this.time > 0) {
         setTimeout(() => {
           this.time -= 1;
           this.countTime();
+          this.setTime(this.time);
         }, 1000);
-      } else this.message = TIME_OVER;
+      }
     },
   },
 };
@@ -42,9 +46,6 @@ export default {
   flex-wrap: wrap
   &-text
     margin: 0
-  &-message
-    @extend .timer-text
-    margin-left: 2rem
 .none-text
   display: none
 </style>
