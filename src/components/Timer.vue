@@ -5,18 +5,17 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
 
 export default {
   name: 'Timer',
-  data() {
-    return {
-      message: '',
-      time: 60,
-    };
-  },
   created() {
     this.countTime();
+  },
+  computed: {
+    ...mapGetters({
+      time: 'getTime',
+    }),
   },
   methods: {
     ...mapMutations({
@@ -24,13 +23,11 @@ export default {
       restoreSteps: 'restoreSteps',
     }),
     countTime() {
-      if (this.time > 0) {
-        setTimeout(() => {
-          this.time -= 1;
-          this.countTime();
-          this.setTime(this.time);
-        }, 1000);
-      }
+      setTimeout(() => {
+        this.time += 1;
+        this.setTime(this.time);
+        this.countTime();
+      }, 1000);
     },
   },
 };
