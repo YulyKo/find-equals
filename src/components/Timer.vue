@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       message: '',
-      time: 6,
+      time: 60,
     };
   },
   created() {
