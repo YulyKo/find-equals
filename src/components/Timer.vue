@@ -24,9 +24,11 @@ export default {
     }),
     countTime() {
       setTimeout(() => {
-        this.time += 1;
-        this.setTime(this.time);
-        this.countTime();
+        if (this.time > 0) {
+          this.time += 1;
+          this.setTime(this.time);
+          this.countTime();
+        }
       }, 1000);
     },
   },
