@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import stepModule from './steps/index';
 
 export default createStore({
   state: {
@@ -75,5 +76,6 @@ export default createStore({
   actions: {
   },
   modules: {
+    stepModule,
   },
 });
