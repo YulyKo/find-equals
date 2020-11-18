@@ -1,5 +1,5 @@
 const TIME_OVER = 'Time is over';
-const WIN = 'You are win';
+const WIN = 'You win';
 
 module.exports = {
   TIME_OVER,
